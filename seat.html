@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Страница выбора зон маршрута — Туапсе</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="3.css">
+  <script src="global.js" defer></script>
+</head>
+<body>
+<section id="header">
+  <div class="container">
+    <header class="site-header">
+      <div class="brand">
+        <div class="logo-icon">
+          <img src="фото/лого.jpg" alt="Logo">
+        </div>
+        <span class="brand-name">Турист-pro: “Исполнить мечты просто!”</span>
+      </div>
+      <nav class="main-nav">
+        <a href="index.html#promos" style="text-decoration: none;" class="nav-link">Акции</a>
+       <a href="index.html#find-route" style="text-decoration: none;" class="nav-link">Поиск</a>
+        <a href="index.html#find-route" style="text-decoration: none;" class="nav-link">Управление бронированием</a>
+      </nav>
+    </header>
+  </div>
+</section>
+
+<section id="hero">
+  <div class="content-wrapper">
+    <div class="hero-content">
+      <h1 class="page-title">Выберите зоны маршрута</h1>
+      <div class="map-container">
+        <img src="фото/карты.png" alt="Map of zones" class="map-image">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="zones">
+  <div class="content-wrapper">
+    <h2 class="section-subtitle">Доступные зоны</h2>
+    <div class="zones-list">
+
+      <!-- Карта зоны 1 -->
+      <article class="zone-card">
+        <div class="zone-info">
+          <div class="zone-text">
+            <h3 class="zone-title">Озеро Горное</h3>
+            <p class="zone-desc">Живописное озеро с чистой водой, окруженное горами. Отличное место для отдыха и фото.</p>
+          </div>
+          <button class="btn-select" data-zone="Озеро Горное" data-price="2000" onclick="selectZone(this)">Выбрать</button>
+        </div>
+        <div class="zone-image-wrapper">
+          <img src="фото/1зона.svg" alt="Озеро Горное" class="zone-img">
+        </div>
+      </article>
+
+      <!-- Карта зоны 2 -->
+      <article class="zone-card">
+        <div class="zone-info">
+          <div class="zone-text">
+            <h3 class="zone-title">Долина Цветов</h3>
+            <p class="zone-desc">Долина с яркими цветами и разнообразной флорой — рай для любителей природы.</p>
+          </div>
+          <button class="btn-select" data-zone="Долина Цветов" data-price="1800" onclick="selectZone(this)">Выбрать</button>
+        </div>
+        <div class="zone-image-wrapper">
+          <img src="фото/2зона.svg" alt="Долина Цветов" class="zone-img">
+        </div>
+      </article>
+
+      <!-- Карта зоны 3 -->
+      <article class="zone-card">
+        <div class="zone-info">
+          <div class="zone-text">
+            <h3 class="zone-title">Ледник Вечный</h3>
+            <p class="zone-desc">Потрясающий ледник с уникальными ледяными образованиями. Отличное место для фото.</p>
+          </div>
+          <button class="btn-select" data-zone="Ледник Вечный" data-price="2500" onclick="selectZone(this)">Выбрать</button>
+        </div>
+        <div class="zone-image-wrapper">
+          <img src="фото/3зона.svg" alt="Ледник Вечный" class="zone-img">
+        </div>
+      </article>
+
+      <!-- Карта зоны 4 -->
+      <article class="zone-card">
+        <div class="zone-info">
+          <div class="zone-text">
+            <h3 class="zone-title">Каскад Водопадов</h3>
+            <p class="zone-desc">Серия водопадов по скалам, создающих живописный и освежающий пейзаж.</p>
+          </div>
+          <button class="btn-select" data-zone="Каскад Водопадов" data-price="2200" onclick="selectZone(this)">Выбрать</button>
+        </div>
+        <div class="zone-image-wrapper">
+          <img src="фото/4зона.svg" alt="Каскад Водопадов" class="zone-img">
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="cta">
+  <div class="content-wrapper">
+    <div class="cta-container">
+      <button class="btn-primary" onclick="goToBooking()">Перейти к бронированию</button>
+    </div>
+  </div>
+</section>
+
+<section id="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="social-links">
+        <a href="#" class="social-icon"><img src="фото/1и.png" alt="Social"></a>
+        <a href="#" class="social-icon"><img src="фото/2и.png" alt="Social"></a>
+        <a href="#" class="social-icon"><img src="фото/3и.png" alt="Social"></a>
+      </div>
+      <div class="footer-info">
+        <p class="phone">Наш телефон: 8 (800) 555 - 33 - 10</p>
+        <p class="copyright">@2025 . Все права защищены.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+let selectedZones = [];
+let zonesPrice = 0;
+
+function selectZone(button) {
+  const zoneName = button.dataset.zone;
+  const zonePrice = Number(button.dataset.price);
+
+  if (!selectedZones.includes(zoneName)) {
+    selectedZones.push(zoneName);
+    zonesPrice += zonePrice;
+  }
+
+  button.textContent = "Выбрано";
+  button.disabled = true;
+}
+
+function goToBooking() {
+  if (selectedZones.length === 0) {
+    alert("Выберите хотя бы одну зону");
+    return;
+  }
+
+  const routeData = JSON.parse(localStorage.getItem("bookingRoute"));
+  if (!routeData) {
+    alert("Ошибка данных маршрута");
+    return;
+  }
+
+  const people = Number(routeData.people || 1);
+
+  const finalData = {
+    ...routeData,
+    zones: selectedZones.join(", "),
+    zonesPrice: zonesPrice,
+    totalPrice: (routeData.basePrice + zonesPrice) * people
+  };
+
+  localStorage.setItem("bookingFinal", JSON.stringify(finalData));
+  window.location.href = "booking.html";
+}
+</script>
+
+</body>
+</html>

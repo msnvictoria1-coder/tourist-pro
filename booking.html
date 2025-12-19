@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Страница бронирования</title>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="4.css">
+  <script src="global.js" defer></script>
+</head>
+<body>
+<section id="header">
+  <div class="container">
+    <header class="site-header">
+      <div class="brand">
+        <div class="logo-icon">
+          <img src="фото/лого.jpg" alt="Logo">
+        </div>
+        <span class="brand-name">Турист-pro: “Исполнить мечты просто!”</span>
+      </div>
+      <nav class="main-nav">
+    <a href="index.html#promos" style="text-decoration: none;" class="nav-link">Акции</a>
+       <a href="index.html#find-route" style="text-decoration: none;" class="nav-link">Поиск</a>
+        <a href="index.html#find-route" style="text-decoration: none;" class="nav-link">Управление бронированием</a>
+      </nav>
+    </header>
+  </div>
+</section>
+<section id="section-booking">
+  <div class="booking-container">
+    <div class="form-wrapper">
+      <h1 class="page-title">Бронирование похода</h1>
+      
+      <form class="booking-form">
+        <!-- Region -->
+        <div class="form-group">
+          <label class="form-label">Регион</label>
+          <input id="region" type="text" class="form-input">
+        </div>
+
+        <!-- Route Name -->
+        <div class="form-group">
+          <label class="form-label">Наименование маршрута</label>
+          <input id="route" type="text" class="form-input">
+        </div>
+
+        <!-- Zones -->
+        <div class="form-group">
+          <label class="form-label">Выбранные зоны</label>
+         <input id="zones" type="text" class="form-input">
+        </div>
+
+        <!-- Dates -->
+        <div class="form-group">
+          <label class="form-label">Даты похода</label>
+       <input id="dates" type="text" class="form-input">
+        </div>
+
+        <!-- People Count -->
+        <div class="form-group">
+          <label class="form-label">Количество людей</label>
+          <input id="people" type="text" class="form-input">
+        </div>
+
+        <!-- Cost -->
+        <div class="form-group">
+          <label class="form-label">Стоимость</label>
+       <input id="price" type="text" class="form-input">
+        </div>
+
+        <!-- Additional Services -->
+        <div class="services-section">
+          <h2 class="section-subtitle">Дополнительные услуги</h2>
+          
+          <div class="checkbox-group">
+            <label class="checkbox-item">
+  <input type="checkbox" class="custom-checkbox service"
+         data-price="3000">
+  <span class="checkbox-text">Услуги проводника</span>
+</label>
+
+<label class="checkbox-item">
+  <input type="checkbox" class="custom-checkbox service"
+         data-price="2000">
+  <span class="checkbox-text">Аренда туристического оборудования</span>
+</label>
+
+<label class="checkbox-item">
+  <input type="checkbox" class="custom-checkbox service"
+         data-price="2500">
+  <span class="checkbox-text">Услуги фотографа/видеооператора</span>
+</label>
+
+<label class="checkbox-item">
+  <input type="checkbox" class="custom-checkbox service"
+         data-price="1500">
+  <span class="checkbox-text">Страхование от несчастных случаев</span>
+</label>
+
+          </div>
+        </div>
+
+        <!-- Comment -->
+        <div class="form-group">
+          <label class="form-label">Комментарий</label>
+          <textarea class="form-textarea" rows="4"></textarea>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-input" placeholder="">
+        </div>
+
+        <!-- Total -->
+        <div class="total-section">
+          <h2 class="section-subtitle">Итого</h2>
+          <div class="total-display">
+            <div class="total-row">
+              <span class="total-label">Общая стоимость</span>
+              <span class="total-amount">12 000 руб.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="submit-wrapper">
+          <button type="submit" class="submit-btn">Оформить бронирование</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+ <section id="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="social-links">
+          <a href="#" class="social-icon"><img src="фото/1и.png" alt="Social"></a>
+          <a href="#" class="social-icon"><img src="фото/2и.png" alt="Social"></a>
+          <a href="#" class="social-icon"><img src="фото/3и.png" alt="Social"></a>
+        </div>
+        <div class="footer-info">
+          <p class="phone">Наш телефон: 8 (800) 555 - 33 - 10</p>
+          <p class="copyright">@2025 . Все права защищены.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+ <script>
+let baseTotal = 0;
+
+document.addEventListener("DOMContentLoaded", () => {
+  const data = JSON.parse(localStorage.getItem("bookingFinal"));
+  if (!data) return;
+
+  baseTotal = data.totalPrice;
+
+  // автозаполнение
+  region.value = data.region;
+  route.value = data.route;
+  zones.value = data.zones;
+  dates.value = data.dates;
+  people.value = data.people;
+  price.value = baseTotal + " руб.";
+  document.querySelector(".total-amount").textContent =
+    baseTotal + " руб.";
+
+  // слушаем доп. услуги
+  document.querySelectorAll(".service").forEach(cb => {
+    cb.addEventListener("change", recalcTotal);
+  });
+});
+
+function recalcTotal() {
+  let servicesSum = 0;
+
+  document.querySelectorAll(".service:checked").forEach(cb => {
+    servicesSum += Number(cb.dataset.price);
+  });
+
+  const finalSum = baseTotal + servicesSum;
+
+  price.value = finalSum + " руб.";
+  document.querySelector(".total-amount").textContent =
+    finalSum + " руб.";
+}
+
+// оформление бронирования
+document.querySelector(".booking-form")
+  .addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    // показываем модальное окно
+    document.getElementById("success-modal").classList.add("show");
+
+    // очищаем данные
+    localStorage.clear();
+  });
+
+function goHome() {
+  window.location.href = "index.html";
+}
+</script>
+
+<!-- Модальное окно подтверждения -->
+<div id="success-modal" class="modal">
+  <div class="modal-content">
+    <div class="modal-icon">✓</div>
+    <h2>Бронирование принято</h2>
+    <p>
+      Спасибо за заявку!<br>
+      Менеджер свяжется с вами в ближайшее время по электронной почте.
+    </p>
+    <button class="modal-btn" onclick="goHome()">На главную</button>
+  </div>
+</div>
+
+
+</body>
+</html>

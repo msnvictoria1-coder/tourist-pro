@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Страница выбора зон маршрута — Кавказ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="3.css">
+  <script src="global.js" defer></script>
+</head>
+<body>
+<section id="header">
+  <div class="container">
+    <header class="site-header">
+      <div class="brand">
+        <div class="logo-icon">
+          <img src="фото/лого.jpg" alt="Logo">
+        </div>
+        <span class="brand-name">Турист-pro: “Исполнить мечты просто!”</span>
+      </div>
+      <nav class="main-nav">
+      <a href="index.html#promos" style="text-decoration: none;" class="nav-link">Акции</a>
+       <a href="index.html#find-route" style="text-decoration: none;" class="nav-link">Поиск</a>
+        <a href="index.html#find-route" style="text-decoration: none;" class="nav-link">Управление бронированием</a>
+      </nav>
+    </header>
+  </div>
+</section>
+
+<section id="hero">
+  <div class="content-wrapper">
+    <div class="hero-content">
+      <h1 class="page-title">Выберите зоны маршрута</h1>
+      <div class="map-container">
+        <img src="фото/карты.png" alt="Map of zones" class="map-image">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="zones">
+  <div class="content-wrapper">
+    <h2 class="section-subtitle">Доступные зоны</h2>
+    <div class="zones-list">
+
+      <!-- Card 1 -->
+      <article class="zone-card">
+        <div class="zone-info">
+          <div class="zone-text">
+            <h3 class="zone-title">Водопад Геви</h3>
+            <p class="zone-desc">Мощный водопад в горной долине, окружённый высокими соснами. Идеальное место для фотографий и отдыха. Высота водопада — 25 метров.</p>
+          </div>
+          <button class="btn-select" data-zone="Водопад Геви" data-price="3000" onclick="selectZone(this)">Выбрать</button>
+        </div>
+        <div class="zone-image-wrapper">
+          <img src="фото/i.webp" alt="Водопад Геви" class="zone-img">
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="zone-card">
+        <div class="zone-info">
+          <div class="zone-text">
+            <h3 class="zone-title">Каменные реки</h3>
+            <p class="zone-desc">Уникальные природные образования — огромные валуны, похожие на реки, среди каменных пустошей. Странные и захватывающие пейзажи.</p>
+          </div>
+          <button class="btn-select" data-zone="Каменные реки" data-price="2500" onclick="selectZone(this)">Выбрать</button>
+        </div>
+        <div class="zone-image-wrapper">
+          <img src="фото/2.webp" alt="Каменные реки" class="zone-img">
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="zone-card">
+        <div class="zone-info">
+          <div class="zone-text">
+            <h3 class="zone-title">Ледниковые озера</h3>
+            <p class="zone-desc">Прозрачные озера в карманах ледников. Виды на ледниковую долину и живописные горные панорамы. Отличное место для отдыха и фото.</p>
+          </div>
+          <button class="btn-select" data-zone="Ледниковые озера" data-price="3500" onclick="selectZone(this)">Выбрать</button>
+        </div>
+        <div class="zone-image-wrapper">
+          <img src="фото/озеро.webp" alt="Ледниковые озера" class="zone-img">
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="cta">
+  <div class="content-wrapper">
+    <div class="cta-container">
+      <button class="btn-primary" onclick="goToBooking()">Перейти к бронированию</button>
+    </div>
+  </div>
+</section>
+
+<section id="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="social-links">
+        <a href="#" class="social-icon"><img src="фото/1и.png" alt="Social"></a>
+        <a href="#" class="social-icon"><img src="фото/2и.png" alt="Social"></a>
+        <a href="#" class="social-icon"><img src="фото/3и.png" alt="Social"></a>
+      </div>
+      <div class="footer-info">
+        <p class="phone">Наш телефон: 8 (800) 555 - 33 - 10</p>
+        <p class="copyright">@2025 . Все права защищены.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+let selectedZones = [];
+let zonesPrice = 0;
+
+function selectZone(button) {
+  const zoneName = button.dataset.zone;
+  const zonePrice = Number(button.dataset.price);
+
+  if (!selectedZones.includes(zoneName)) {
+    selectedZones.push(zoneName);
+    zonesPrice += zonePrice;
+  }
+
+  button.textContent = "Выбрано";
+  button.disabled = true;
+}
+
+function goToBooking() {
+  if (selectedZones.length === 0) {
+    alert("Выберите хотя бы одну зону");
+    return;
+  }
+
+  const routeData = JSON.parse(localStorage.getItem("bookingRoute"));
+  if (!routeData) {
+    alert("Ошибка данных маршрута");
+    return;
+  }
+
+  const people = Number(routeData.people || 1);
+
+  const finalData = {
+    ...routeData,
+    zones: selectedZones.join(", "),
+    zonesPrice: zonesPrice,
+    totalPrice: (routeData.basePrice + zonesPrice) * people
+  };
+
+  localStorage.setItem("bookingFinal", JSON.stringify(finalData));
+  window.location.href = "booking.html";
+}
+</script>
+
+</body>
+</html>

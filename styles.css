@@ -1,0 +1,820 @@
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+#about, #reviews, #how-it-works, #find-route, #newsletter {
+  margin-bottom: 40px;  /* Равные отступы между секциями */
+}
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f7fafc;
+  color: #0d141c;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+  padding: 0;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* Header Styles */
+#header {
+  background-color: #f7fafc;
+  border-bottom: 1px solid #e5e8eb;
+}
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  height: 65px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo-icon {
+  width: 35px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.brand-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #0d141c;
+  white-space: nowrap;
+}
+
+.main-nav {
+  display: flex;
+  gap: 36px;
+  align-items: center;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #0d141c;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .site-header {
+    flex-direction: column;
+    height: auto;
+    gap: 16px;
+  }
+  
+  .main-nav {
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .brand-name {
+    font-size: 14px;
+  }
+}
+
+/* Hero Section */
+#hero {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.hero-card {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center; /* Центрируем содержимое по вертикали */
+  align-items: center;     /* Центрируем содержимое по горизонтали */
+  padding: 0;              /* Убираем паддинг, чтобы избежать лишнего отступа */
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center; /* Центрируем текст */
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Центрируем по горизонтали */
+  justify-content: center; /* Центрируем по вертикали */
+  gap: 24px;
+}
+
+.hero-title {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+}
+
+/* Подзаголовок */
+.hero-subtitle {
+  font-size: 18px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Кнопка "Забронировать" */
+.hero-cta {
+  background-color: #268cf5;
+  color: #f7fafc;
+  padding: 12px 24px;  /* Увеличиваем отступы */
+  border-radius: 8px;
+  font-size: 18px;  /* Увеличиваем шрифт */
+  font-weight: 600;
+  width: fit-content;
+  margin-top: 16px;
+  transition: background-color 0.2s;
+}
+
+.hero-cta:hover {
+  background-color: #1a75d6;
+}
+
+@media (max-width: 768px) {
+  .hero-card {
+    padding: 20px;
+    height: auto;
+    min-height: 400px;
+  }
+  
+  .hero-title {
+    font-size: 32px;
+  }
+}
+
+/* Additional Section Styles (How It Works, About, Reviews, etc.) */
+
+/* How it works section */
+#how-it-works {
+  padding: 40px 0;
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0d141c;
+  margin-bottom: 32px;
+}
+
+.steps-grid {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.step-item {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-bg-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;  /* Закругляем углы квадратов */
+}
+
+.step-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50px;  /* Закругляем углы */
+}
+.step-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.step-number {
+  font-size: 36px;  /* Увеличиваем размер цифры */
+  font-weight: 700;
+  color: #000000;
+  background: rgb(38, 140, 245, 0.5);
+  width: 60px;  /* Увеличиваем размеры круга */
+  height: 60px; /* Увеличиваем размеры круга */
+  border-radius: 50%;  /* Делаем круглыми */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.step-icon {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.step-label {
+  font-size: 20px;
+  font-weight: 600;
+  color: #000;
+}
+.reviews-list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px; /* Промежутки между отзывами */
+}
+
+.review-item {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.review-header {
+  display: flex; /* Располагаем аватарку и имя в строку */
+  align-items: center; /* Выравниваем по вертикали */
+  gap: 12px; /* Отступ между аватаркой и именем */
+}
+
+.avatar {
+  width: 40px;  /* Размер аватарки */
+  height: 40px; /* Размер аватарки */
+  border-radius: 50%; /* Круглая аватарка */
+}
+
+.reviewer-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #0d141c;
+}
+
+.review-stars img {
+  height: 19px;
+  width: auto;
+}
+
+.review-text {
+  font-size: 14px;
+  line-height: 1.4;
+  color: #000;
+  max-width: 880px;
+}
+
+
+/* Стили для формы подписки */
+.newsletter-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+/* Форма подписки */
+.newsletter-form {
+  width: 100%;
+  max-width: 350px;  /* Ограничиваем ширину формы */
+}
+
+/* Контейнер для поля ввода */
+.email-input-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(139, 177, 178, 0.5);
+  border-radius: 50px;
+  height: 40px; /* Высота поля */
+  width: 100%;
+  padding: 0 16px;
+  position: relative;
+}
+
+/* Инпут с email */
+.email-input {
+  width: 100%;  /* Поле занимает всю ширину */
+  height: 100%;
+  border: none;
+  background-color: transparent;  /* Без фона */
+  color: #fff;  /* Белый текст */
+  font-size: 14px;
+  padding: 0 12px;
+  box-sizing: border-box; /* Чтобы текст не выходил за пределы поля */
+}
+
+/* Кнопка с галочкой */
+.newsletter-icon {
+  background-color: rgb(38, 140, 245, 0.5);
+  width: 24px;  /* Размер круга */
+  height: 24px;  /* Размер круга */
+  border-radius: 50%;  /* Делаем круг */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 10px; /* Отступ от поля ввода */
+}
+
+/* Кнопка для отправки */
+.submit-btn {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+
+
+#find-route {
+  padding: 60px 0;
+}
+
+.find-route-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 90px; /* Увеличиваем пространство между блоками */
+}
+
+/* Основной контейнер для формы бронирования */
+/* Основная форма */
+.route-form {
+  max-width: 700px;  /* Увеличиваем ширину формы */
+  display: flex;
+  flex-direction: column;
+  gap: 24px;  /* Промежутки между полями */
+}
+
+/* Поля на одной линии */
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;  /* Промежуток между полями */
+}
+
+/* Для полей "Количество участников" и "Дата похода" */
+.form-group.half {
+  flex: 1;
+  min-width: 48%;  /* Ограничиваем минимальную ширину для полей */
+}
+
+/* Общие стили для полей */
+.input-box {
+  width: 100%;
+  height: 45px;
+  border-radius: 50px;
+  padding: 0 12px;
+  background-color: rgba(139, 177, 178, 0.5); /* Цвет фона */
+  font-size: 14px;
+  color: #fff;  /* Белый цвет текста */
+  box-sizing: border-box; /* Чтобы padding не выходил за пределы */
+  border: none;  /* Убираем обводку */
+  outline: none;  /* Убираем стандартную обводку при фокусе */
+}
+
+.input-box:focus {
+  outline: none;  /* Убираем стандартную обводку */
+}
+/* Кнопка поиска */
+.search-btn-wrapper {
+  display: flex;
+  justify-content: center; /* Центрируем кнопку */
+  margin-top: 20px; /* Отступ сверху */
+}
+
+.search-btn {
+  background-color: rgba(139, 177, 178, 0.5); /* Тот же цвет фона, как у остальных полей */
+  border-radius: 50px;
+  height: 45px;
+  width: 100%;
+  max-width: 311px;  /* Максимальная ширина кнопки */
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;  /* Убираем обводку */
+  transition: background-color 0.3s ease; /* Плавный переход для фона */
+}
+
+/* Эффект при наведении */
+.search-btn:hover {
+  background-color: rgba(139, 177, 178, 0.7);  /* Немного темнее при наведении */
+}
+
+/* Стили для фото справа от формы */
+.find-route-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+}
+
+.route-image {
+  flex: 1;
+  max-width: 40%;  /* Ограничиваем ширину изображения */
+  display: flex;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.route-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 50%
+}
+/* Цвет текста в поле "Количество участников" */
+#participants {
+  color: #fff;  /* Белый цвет текста, который вводит пользователь */
+}
+
+/* Цвет плейсхолдера */
+#participants::placeholder {
+  color: #fff;  /* Белый цвет плейсхолдера (подсказки) */
+}
+/* Адаптивность на маленьких экранах */
+@media (max-width: 768px) {
+  .find-route-content {
+    flex-direction: column-reverse;
+  }
+
+  .route-form {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+ 
+.newsletter-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+
+.newsletter-form {
+  width: 100%;
+  max-width: 350px; /* Уменьшаем ширину формы */
+}
+
+/* Стили для формы подписки на рассылку */
+.email-input-wrapper {
+  background-color: rgba(139, 177, 178, 0.5);  /* Можно оставить фон как есть */
+  border-radius: 50px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  position: relative;
+}
+
+.email-input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: transparent;  /* Фон не меняется */
+  color: #fff;  /* Белый текст в поле */
+  font-size: 14px;
+  padding: 0 12px;
+}
+
+.submit-btn {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.email-placeholder {
+  font-size: 14px;
+  color: #fff; /* Белый цвет текста */
+}
+
+.submit-btn {
+  color: #000;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.promo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Три колонки */
+  gap: 24px;
+}
+
+.promo-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;  /* Уменьшаем промежуток между картинкой и текстом */
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.promo-image {
+  width: 100%;
+  height: 180px;  /* Высота изображения */
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.promo-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* Сохранение пропорций изображения */
+}
+
+.promo-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  text-align: center;
+}
+
+.promo-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #0d141c;  /* Цвет заголовка */
+}
+
+.promo-desc {
+  font-size: 14px;
+  color: #4A739C;  /* Цвет описания */
+  line-height: 1.4;
+}
+
+
+#footer {
+  padding: 40px 0;
+  border-top: 1px solid #e5e8eb;
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.social-links {
+  display: flex;
+  gap: 16px;
+  justify-content: center; /* Центрируем иконки */
+}
+
+.social-icon {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+.footer-info {
+  font-size: 14px;
+  color: #4a739c;
+}
+/* Стили для модального окна уведомления */
+#subscription-notification {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #268cf5;
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+#subscription-notification.show {
+  display: block;
+  opacity: 1;
+}
+@media (max-width: 480px) {
+
+  /* Общие */
+  .container {
+    padding: 0 16px;
+  }
+
+  .section-title {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  /* ---------- HEADER ---------- */
+  .site-header {
+    flex-direction: column;
+    gap: 12px;
+    height: auto;
+  }
+
+  .brand {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .brand-name {
+    font-size: 14px;
+    white-space: normal;
+  }
+
+  .main-nav {
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .nav-link {
+    font-size: 14px;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero-card {
+    min-height: 360px;
+    padding: 16px;
+  }
+
+  .hero-title {
+    font-size: 24px;
+  }
+
+  .hero-subtitle {
+    font-size: 14px;
+  }
+
+  .hero-cta {
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  /* ---------- HOW IT WORKS ---------- */
+  .steps-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .step-item {
+    width: 100%;
+    max-width: 280px;
+    height: 260px;
+  }
+
+  /* ---------- REVIEWS ---------- */
+  .review-text {
+    font-size: 13px;
+  }
+
+  /* ---------- FIND ROUTE ---------- */
+  .find-route-content {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .route-image {
+    max-width: 100%;
+    order: -1;
+  }
+
+  .route-image img {
+    border-radius: 16px;
+  }
+
+  .route-form {
+    gap: 16px;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .input-box {
+    height: 42px;
+    font-size: 14px;
+  }
+
+  .search-btn {
+    max-width: 100%;
+  }
+
+  /* ---------- PROMOS ---------- */
+  .promo-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .promo-image {
+    height: 160px;
+  }
+
+  .promo-title {
+    font-size: 16px;
+  }
+
+  .promo-desc {
+    font-size: 13px;
+  }
+
+  /* ---------- NEWSLETTER ---------- */
+  .newsletter-title {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .newsletter-form {
+    max-width: 100%;
+  }
+
+  /* ---------- FOOTER ---------- */
+  .footer-info {
+    font-size: 12px;
+  }
+}
